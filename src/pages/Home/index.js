@@ -19,10 +19,11 @@ export const Home = () => {
 
       const projectsFormated = data.map(e => {
         return {
+          id: e.id,
           nome: e.full_name,
           url: e.html_url
         }
-      })
+      });
 
       setProjects(projectsFormated)
 
@@ -37,12 +38,12 @@ export const Home = () => {
           <h2>Todos os projetos de {userName}</h2>
         </div>
         {projects.map(e => (
-        <Card onClick={() => window.open(e.url)}>
+        <Card onClick={() => window.open(e.url)} key={e.id}>
           <div>
             <p>{e.nome}</p>
           </div>
           <div>
-            <img  src={ArrowSvg} />
+            <img alt="arrow" src={ArrowSvg} />
           </div>
         </Card>
         ))}
